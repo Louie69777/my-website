@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special Message ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ff9ec4,#ffd6e8);
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:rgba(255,255,255,0.9);
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    max-width:500px;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+    z-index:2;
+}
+
+h1{
+    color:#ff2e63;
+    margin-bottom:15px;
+}
+
+p{
+    color:#444;
+    font-size:18px;
+    line-height:1.6;
+}
+
+.heart{
+    position:fixed;
+    bottom:-20px;
+    color:#ff2e63;
+    animation:float linear forwards;
+    user-select:none;
+    z-index:1;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>From LouieXenoXID</h1>
+
+    <p>
+        Hi mga Real KneeGhas<br><br>
+        Gahi nakayko mo coding HAHAHHAHA😆
+    </p>
+</div>
+
+<script>
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(20+Math.random()*30)+"px";
+    heart.style.animationDuration=(4+Math.random()*4)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
+}
+
+setInterval(createHeart,250);
+</script>
+
+</body>
+</html>
