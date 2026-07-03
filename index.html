@@ -90,8 +90,12 @@ p{
 <body>
 
 <audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
+    <source src="stillintoyou.mp3" type="audio/mpeg">
 </audio>
+
+<div id="tapMessage" class="tap-message">
+   💖Pinduta ko💖
+</div>
 
 <div class="container">
     <h1>From LouieXenoXID</h1>
@@ -99,17 +103,24 @@ p{
     <p>
         Hi mga Real KneeGhas<br><br>
         Gahi nakayko mo coding HAHAHHAHA😆
-    </p><div id="tapMessage" class="tap-message">
-💖 Tap anywhere to start the music 💖
-    </div>
+    </p>
 </div>
 
 <script>
-// Play music after the first tap/click
 const music = document.getElementById("bgMusic");
+const tapMessage = document.getElementById("tapMessage");
 
-document.addEventListener("click", function () {
-    music.play();
+document.addEventListener("click", async () => {
+    try {
+        await music.play();
+        tapMessage.style.opacity = "0";
+
+        setTimeout(() => {
+            tapMessage.remove();
+        }, 500);
+    } catch (e) {
+        console.log("Music couldn't play:", e);
+    }
 }, { once: true });
 
 function createHeart(){
@@ -128,17 +139,7 @@ function createHeart(){
     },8000);
 }
 
-setInterval(createHeart,250);const music = document.getElementById("bgMusic");
-const tapMessage = document.getElementById("tapMessage");
-
-document.addEventListener("click", () => {
-    music.play();
-    tapMessage.style.opacity = "0";
-
-    setTimeout(() => {
-        tapMessage.remove();
-    }, 500);
-}, { once: true });
+setInterval(createHeart,250);
 </script>
 
 </body>
