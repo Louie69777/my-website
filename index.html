@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -61,11 +61,37 @@ p{
         transform:translateY(-110vh) rotate(360deg);
         opacity:0;
     }
+}.tap-message{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:rgba(255,255,255,.95);
+    color:#ff2e63;
+    padding:18px 28px;
+    border-radius:15px;
+    font-size:22px;
+    font-weight:bold;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+    z-index:9999;
+    animation:pulse 1.5s infinite;
+    cursor:pointer;
+    transition:.5s;
+}
+
+@keyframes pulse{
+    0%{transform:translate(-50%,-50%) scale(1);}
+    50%{transform:translate(-50%,-50%) scale(1.08);}
+    100%{transform:translate(-50%,-50%) scale(1);}
 }
 </style>
 </head>
 
 <body>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
 
 <div class="container">
     <h1>From LouieXenoXID</h1>
@@ -73,10 +99,19 @@ p{
     <p>
         Hi mga Real KneeGhas<br><br>
         Gahi nakayko mo coding HAHAHHAHA😆
-    </p>
+    </p><div id="tapMessage" class="tap-message">
+💖 Tap anywhere to start the music 💖
+    </div>
 </div>
 
 <script>
+// Play music after the first tap/click
+const music = document.getElementById("bgMusic");
+
+document.addEventListener("click", function () {
+    music.play();
+}, { once: true });
+
 function createHeart(){
     const heart=document.createElement("div");
     heart.classList.add("heart");
@@ -93,7 +128,17 @@ function createHeart(){
     },8000);
 }
 
-setInterval(createHeart,250);
+setInterval(createHeart,250);const music = document.getElementById("bgMusic");
+const tapMessage = document.getElementById("tapMessage");
+
+document.addEventListener("click", () => {
+    music.play();
+    tapMessage.style.opacity = "0";
+
+    setTimeout(() => {
+        tapMessage.remove();
+    }, 500);
+}, { once: true });
 </script>
 
 </body>
